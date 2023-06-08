@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Estonia-routs</title>
+  <style>
+    #search-input {
+      width: 300px;
+    }
+    #search-results {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+
+<h1>Поиск по городам</h1>
+  <input type="text" id="search-input" placeholder="Введите поисковый запрос">
+  <div id="search-results"></div> 
+ </div>
+   
+
+ <p></p>
+
+<div class="links-1">
+<button><a href="city/Ahmadabad.html">Ahmadabad</a></button>
+<p></p>
+<button><a href="city/bangalor.html">Bangalor</a></button>
+<p></p>
+<button><a href="city/bhopal.html">Bhopal</a></button>
+<p></p>
+<button><a href="city/Chennai.html">Chennai</a></button>
+<p></p>
+<button><a href="city/deli.html">Deli</a></button>
+<p></p>
+<button><a href="city/djaipur.html">Djaipur</a></button>
+<p></p>
+<button><a href="city/Haidabarad.html">Haidabarad</a></button>
+<p></p>
+<button><a href="city/indaur.html">Indaur</a></button>
+<p></p>
+<button><a href="city/kalkuta.html">Kalkuta</a></button>
+<p></p>
+<button><a href="city/kanpur.html">Kanpur</a></button>
+<p></p>
+<button><a href="city/lakhnau.html">Lakhnau</a></button>
+<p></p>
+<button><a href="city/mumbai.html">Mumbai</a></button>
+<p></p>
+<button><a href="city/nagpur.html">Nagpur</a></button>
+<p></p>
+<button><a href="city/patna.html">Patna</a></button>
+<p></p>
+<button><a href="city/pimpri-chinvad.html">Pimpri-chinvad</a></button>
+<p></p>
+<button><a href="city/puna.html">Puna</a></button>
+<p></p>
+<button><a href="city/surat.html">Surat</a></button>
+<p></p>
+<button><a href="city/thane.html">Thane</a></button>
+<p></p>
+<button><a href="city/Vishakhapatnam.html">Vishakhapatnam</a></button>
+<p></p>
+<button><a href="city/vododara.html">Vododara</a></button>
+</div>
+<style>
+  a{
+    color: #000;
+    text-decoration: none;
+  }
+  .links-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+    input{
+      text-align: center;
+    }
+    .search-results{
+      text-align: center;
+    }
+    .center{
+      text-align: center;
+    }
+  /* .links{
+    opacity:0%
+  } */
+</style>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    // Список ссылок для поиска
+    const links = [
+"city/Ahmadabad.html",
+"city/bangalor.html",
+"city/bhopal.html",
+"city/Chennai.html",
+"city/deli.html",
+"city/djaipur.html",
+"city/Haidabarad.html",
+"city/indaur.html",
+"city/kalkuta.html",
+"city/kanpur.html",
+"city/lakhnau.html",
+"city/mumbai.html",
+"city/nagpur.html",
+"city/patna.html",
+"city/pimpri-chinvad.html",
+"city/puna.html",
+"city/surat.html",
+"city/thane.html",
+"city/Vishakhapatnam.html",
+"city/vododara.html"
+    ];
+
+    // Функция для поиска по ссылкам
+    function searchLinks(query) {
+      const results = links.filter(link => link.toLowerCase().includes(query.toLowerCase()));
+      return results;
+    }
+
+    // Функция для отображения результатов поиска
+    function displaySearchResults(results) {
+      const searchResults = document.getElementById('search-results');
+      searchResults.innerHTML = '';
+
+      if (results.length === 0) {
+        searchResults.textContent = 'Ничего не найдено.';
+      } else {
+        results.forEach(result => {
+          const linkElement = document.createElement('a');
+          linkElement.href = result;
+          linkElement.textContent = result;
+          linkElement.target = '_blank';
+
+          const listItem = document.createElement('li');
+          listItem.appendChild(linkElement);
+
+          searchResults.appendChild(listItem);
+        });
+      }
+    }
+
+    // Обработчик события при вводе текста в поле поиска
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', function() {
+      const query = this.value;
+      const searchResults = searchLinks(query);
+      displaySearchResults(searchResults);
+    });
+
+
+
+  let input1 = document.querySelector('#search-input')
+  let links1 = document.querySelector('.links-1')//.style.opacity='0%'
+input1.addEventListener('click', function () {
+  links1.style.opacity = '0%'
+})
+
+  </script>
+</body>
+</html>
