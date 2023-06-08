@@ -1,0 +1,165 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Estonia-routs</title>
+  <style>
+    #search-input {
+      width: 300px;
+    }
+    #search-results {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+
+<h1>Поиск по городам</h1>
+  <input type="text" id="search-input" placeholder="Введите поисковый запрос">
+  <div id="search-results"></div> 
+ </div>
+   
+
+ <p></p>
+
+<div class="links-1">
+<button><a href="city/Shanghai.html">Shanghai</a></button>
+<p></p>
+<button><a href="city/Beijing.html">Beijing</a></button>
+<p></p>
+<button><a href="city/Chengdu.html">Chengdu</a></button>
+<p></p>
+<button><a href="city/Wuhan.html">Wuhan</a></button>
+<p></p>
+<button><a href="city/Tientsin.html">Tientsin</a></button>
+<p></p>
+<button><a href="city/Shenyang.html">Shenyang</a></button>
+<p></p>
+<button><a href="city/Guangzhou.html">Guangzhou</a></button>
+<p></p>
+<button><a href="city/Chongqing.html">Chongqing</a></button>
+<p></p>
+<button><a href="city/Hangzhou.html">Hangzhou</a></button>
+<p></p>
+<button><a href="city/Nanchang.html">Nanchang</a></button>
+<p></p>
+<button><a href="city/Shenzhen.html">Shenzhen</a></button>
+<p></p>
+<button><a href="city/Jinan.html">Jinan</a></button>
+<p></p>
+<button><a href="city/Nanjing.html">Nanjing</a></button>
+<p></p>
+<button><a href="city/Qingdaol.html">Qingdao</a></button>
+<p></p>
+<button><a href="city/Harbin.html">Harbin</a></button>
+<p></p>
+<button><a href="city/Shijiazhuang.html">Shijiazhuang</a></button>
+<p></p>
+<button><a href="city/Xi'an.html">Xi'an</a></button>
+<p></p>
+<button><a href="city/Taiyuan.html">Taiyuan</a></button>
+<p></p>
+<button><a href="city/Dalian.html">Dalian</a></button>
+<p></p>
+<button><a href="city/Changchun.html">Changchun</a></button>
+</div>
+<style>
+  a{
+    color: #000;
+    text-decoration: none;
+  }
+  .links-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+    input{
+      text-align: center;
+    }
+    .search-results{
+      text-align: center;
+    }
+    .center{
+      text-align: center;
+    }
+  /* .links{
+    opacity:0%
+  } */
+</style>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    // Список ссылок для поиска
+    const links = [
+    "city/tallinn.html",
+"city/tartu.html",
+"city/narva.html",
+"city/pärnu.html",
+"city/Kohtla-Järve.html",
+"city/viljandi.html",
+"city/mardu.html",
+"city/rakvere.html",
+"city/sillamäe.html",
+"city/kurresaare.html",
+"city/võru.html",
+"city/valka.html",
+"city/jõhvi.html",
+"city/haapsalu.html",
+"city/keila.html",
+"city/paide.html",
+"city/põlva.html",
+"city/elva.html",
+"city/tapa.html",
+"city/rapla.html"
+    ];
+
+    // Функция для поиска по ссылкам
+    function searchLinks(query) {
+      const results = links.filter(link => link.toLowerCase().includes(query.toLowerCase()));
+      return results;
+    }
+
+    // Функция для отображения результатов поиска
+    function displaySearchResults(results) {
+      const searchResults = document.getElementById('search-results');
+      searchResults.innerHTML = '';
+
+      if (results.length === 0) {
+        searchResults.textContent = 'Ничего не найдено.';
+      } else {
+        results.forEach(result => {
+          const linkElement = document.createElement('a');
+          linkElement.href = result;
+          linkElement.textContent = result;
+          linkElement.target = '_blank';
+
+          const listItem = document.createElement('li');
+          listItem.appendChild(linkElement);
+
+          searchResults.appendChild(listItem);
+        });
+      }
+    }
+
+    // Обработчик события при вводе текста в поле поиска
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', function() {
+      const query = this.value;
+      const searchResults = searchLinks(query);
+      displaySearchResults(searchResults);
+    });
+
+
+
+  let input1 = document.querySelector('#search-input')
+  let links1 = document.querySelector('.links-1')//.style.opacity='0%'
+input1.addEventListener('click', function () {
+  links1.style.opacity = '0%'
+})
+
+
+
+  </script>
+</body>
+</html>
