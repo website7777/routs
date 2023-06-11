@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Estonia-routs</title>
+  <style>
+    #search-input {
+      width: 300px;
+    }
+    #search-results {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+
+<h1>Поиск по городам</h1>
+  <input type="text" id="search-input" placeholder="Введите поисковый запрос">
+  <div id="search-results"></div> 
+ </div>
+   
+
+ <p></p>
+
+<div class="links-1">
+<button><a href="city/São Paulo.html">São Paulo</a></button>
+<p></p>
+<button><a href="city/Rio de Janeiro.html">Rio de Janeiro</a></button>
+<p></p>
+<button><a href="city/Salvador.html">Salvador</a></button>
+<p></p>
+<button><a href="city/Brasília.html">Brasília</a></button>
+<p></p>
+<button><a href="city/Fortaleza.html">Fortaleza</a></button>
+<p></p>
+<button><a href="city/Belo Horizonte.html">Belo Horizonte</a></button>
+<p></p>
+<button><a href="city/Manaus.html">Manaus</a></button>
+<p></p>
+<button><a href="city/Curitiba.html">Curitiba</a></button>
+<p></p>
+<button><a href="city/Recife.html">Recife</a></button>
+<p></p>
+<button><a href="city/Porto Alegre.html">Porto Alegre</a></button>
+<p></p>
+<button><a href="city/Belém.html">Belém</a></button>
+<p></p>
+<button><a href="city/Maceió.html">Maceió</a></button>
+<p></p>
+<button><a href="city/Campinas.html">Campinas</a></button>
+<p></p>
+<button><a href="city/Santos.html">Santos</a></button>
+<p></p>
+<button><a href="city/Vitória.html">Vitória</a></button>
+<p></p>
+<button><a href="city/Florianópolis.html">Florianópolis</a></button>
+<p></p>
+<button><a href="city/Teresina.html">Teresina</a></button>
+<p></p>
+<button><a href="city/Natal.html">Natal</a></button>
+<p></p>
+<button><a href="city/Campo Grande.html">Campo Grande</a></button>
+</div>
+<style>
+  a{
+    color: #000;
+    text-decoration: none;
+  }
+  .links-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+    input{
+      text-align: center;
+    }
+    .search-results{
+      text-align: center;
+    }
+    .center{
+      text-align: center;
+    }
+  /* .links{
+    opacity:0%
+  } */
+</style>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    // Список ссылок для поиска
+    const links = [
+"city/São Paulo.html",
+"city/Rio de Janeiro.html",
+"city/Salvador.html",
+"city/Brasília.html",
+"city/Fortaleza.html",
+"city/Belo Horizonte.html",
+"city/Manaus.html",
+"city/Curitiba.html",
+"city/Recife.html",
+"city/Porto Alegre.html",
+"city/Belém.html",
+"city/Maceió.html",
+"city/Campinas.html",
+"city/Santos.html",
+"city/Vitória.html",
+"city/Florianópolis.html",
+"city/Teresina.html",
+"city/Natal.html",
+"city/Campo Grande.html",
+    ];
+
+    // Функция для поиска по ссылкам
+    function searchLinks(query) {
+      const results = links.filter(link => link.toLowerCase().includes(query.toLowerCase()));
+      return results;
+    }
+
+    // Функция для отображения результатов поиска
+    function displaySearchResults(results) {
+      const searchResults = document.getElementById('search-results');
+      searchResults.innerHTML = '';
+
+      if (results.length === 0) {
+        searchResults.textContent = 'Ничего не найдено.';
+      } else {
+        results.forEach(result => {
+          const linkElement = document.createElement('a');
+          linkElement.href = result;
+          linkElement.textContent = result;
+          linkElement.target = '_blank';
+
+          const listItem = document.createElement('li');
+          listItem.appendChild(linkElement);
+
+          searchResults.appendChild(listItem);
+        });
+      }
+    }
+
+    // Обработчик события при вводе текста в поле поиска
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', function() {
+      const query = this.value;
+      const searchResults = searchLinks(query);
+      displaySearchResults(searchResults);
+    });
+
+
+
+  let input1 = document.querySelector('#search-input')
+  let links1 = document.querySelector('.links-1')//.style.opacity='0%'
+input1.addEventListener('click', function () {
+  links1.style.opacity = '0%'
+})
+
+  </script>
+</body>
+</html>

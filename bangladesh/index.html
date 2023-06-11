@@ -1,0 +1,164 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bangladesh-routs</title>
+  <style>
+    #search-input {
+      width: 300px;
+    }
+    #search-results {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+
+<h1>Поиск по городам</h1>
+  <input type="text" id="search-input" placeholder="Введите поисковый запрос">
+  <div id="search-results"></div> 
+ </div>
+   
+
+ <p></p>
+
+<div class="links-1">
+<button><a href="city/Barakpur.html">Barakpur</a></button>
+<p></p>
+<button><a href="city/Barisal.html">Barisal</a></button>
+<p></p>
+<button><a href="city/Bogra.html">Bogra</a></button>
+<p></p>
+<button><a href="city/Chittagong.html">Chittagong</a></button>
+<p></p>
+<button><a href="city/Comilla.html">Comilla</a></button>
+<p></p>
+<button><a href="city/Dhaka.html">Dhaka</a></button>
+<p></p>
+<button><a href="city/Dinaygor.html">Dinaygor</a></button>
+<p></p>
+<button><a href="city/Gazipur.html">Gazipur</a></button>
+<p></p>
+<button><a href="city/Khulna.html">Khulna</a></button>
+<p></p>
+<button><a href="city/Mirpur.html">Mirpur</a></button>
+<p></p>
+<button><a href="city/Mymensingh.html">Mymensingh</a></button>
+<p></p>
+<button><a href="city/Narayanganj.html">Narayanganj</a></button>
+<p></p>
+<button><a href="city/Narsingdi.html">Narsingdi</a></button>
+<p></p>
+<button><a href="city/Pabna.html">Pabna</a></button>
+<p></p>
+<button><a href="city/Raipur.html">Raipur</a></button>
+<p></p>
+<button><a href="city/Rajshahi.html">Rajshahi</a></button>
+<p></p>
+<button><a href="city/Rangpur.html">Rangpur</a></button>
+<p></p>
+<button><a href="city/Silet.html">Silet</a></button>
+<p></p>
+<button><a href="city/Silicates.html">Silicates</a></button>
+<p></p>
+<button><a href="city/Tonga.html">Tonga</a></button>
+</div>
+<style>
+  a{
+    color: #000;
+    text-decoration: none;
+  }
+  .links-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+    input{
+      text-align: center;
+    }
+    .search-results{
+      text-align: center;
+    }
+    .center{
+      text-align: center;
+    }
+  /* .links{
+    opacity:0%
+  } */
+</style>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    // Список ссылок для поиска
+    const links = [
+"city/Barakpur.html",
+"city/Barisal.html",
+"city/Bogra.html",
+"city/Chittagong.html",
+"city/Comilla.html",
+"city/Dhaka.html",
+"city/Dinaygor.html",
+"city/Gazipur.html",
+"city/Khulna.html",
+"city/Mirpur.html",
+"city/Mymensingh.html",
+"city/Narayanganj.html",
+"city/Narsingdi.html",
+"city/Pabna.html",
+"city/Raipur.html",
+"city/Rajshahi.html",
+"city/Rangpur.html",
+"city/Silet.html",
+"city/Silicates.html",
+"city/Tonga.html"
+    ];
+
+    // Функция для поиска по ссылкам
+    function searchLinks(query) {
+      const results = links.filter(link => link.toLowerCase().includes(query.toLowerCase()));
+      return results;
+    }
+
+    // Функция для отображения результатов поиска
+    function displaySearchResults(results) {
+      const searchResults = document.getElementById('search-results');
+      searchResults.innerHTML = '';
+
+      if (results.length === 0) {
+        searchResults.textContent = 'Ничего не найдено.';
+      } else {
+        results.forEach(result => {
+          const linkElement = document.createElement('a');
+          linkElement.href = result;
+          linkElement.textContent = result;
+          linkElement.target = '_blank';
+
+          const listItem = document.createElement('li');
+          listItem.appendChild(linkElement);
+
+          searchResults.appendChild(listItem);
+        });
+      }
+    }
+
+    // Обработчик события при вводе текста в поле поиска
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', function() {
+      const query = this.value;
+      const searchResults = searchLinks(query);
+      displaySearchResults(searchResults);
+    });
+
+
+
+  let input1 = document.querySelector('#search-input')
+  let links1 = document.querySelector('.links-1')//.style.opacity='0%'
+input1.addEventListener('click', function () {
+  links1.style.opacity = '0%'
+})
+
+  </script>
+</body>
+</html>
