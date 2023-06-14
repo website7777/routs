@@ -1,0 +1,165 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bangladesh-routs</title>
+  <style>
+    #search-input {
+      width: 300px;
+    }
+    #search-results {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="center">
+
+<h1>Поиск по городам</h1>
+  <input type="text" id="search-input" placeholder="Введите поисковый запрос">
+  <div id="search-results"></div> 
+ </div>
+   
+
+ <p></p>
+
+<div class="links-1">
+<button><a href="city/moscow.html">Moscow</a></button>
+<p></p>
+<button><a href="city/Sankt-Petersburg.html">Sankt-Petersburg</a></button>
+<p></p>
+<button><a href="city/Novosibirsk.html">Novosibirsk</a></button>
+<p></p>
+<button><a href="city/Ekaterinburg.html">Ekaterinburg</a></button>
+<p></p>
+<button><a href="city/Kazan.html">Kazan</a></button>
+<p></p>
+<button><a href="city/Nizhniy Novgorod.html">Nizhniy Novgorod</a></button>
+<p></p>
+<button><a href="city/Chelyabinsk.html">Chelyabinsk</a></button>
+<p></p>
+<button><a href="city/Omsk.html">Omsk</a></button>
+<p></p>
+<button><a href="city/Krasnodar.html">Krasnodar</a></button>
+<p></p>
+<button><a href="city/Rostov-on-Don.html">Rostov-on-Don</a></button>
+<p></p>
+<button><a href="city/Ufa.html">Ufa</a></button>
+<p></p>
+<button><a href="city/Krasnoyarsk.html">Krasnoyarsk</a></button>
+<p></p>
+<button><a href="city/Perm.html">Perm</a></button>
+<p></p>
+<button><a href="city/Voronezh.html">Voronezh</a></button>
+<p></p>
+<button><a href="city/Volgograd.html">Volgograd</a></button>
+<p></p>
+<button><a href="city/Samara.html">Samara</a></button>
+<p></p>
+<button><a href="city/Saratov.html">Saratov</a></button>
+<p></p>
+<button><a href="city/Tyumen.html">Tyumen</a></button>
+<p></p>
+<button><a href="city/Togliatti.html">Togliatti</a></button>
+<p></p>
+<button><a href="city/Izhevsk.html">Izhevsk</a></button>
+</div>
+<style>
+  a{
+    color: #000;
+    text-decoration: none;
+  }
+  .links-1 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+    input{
+      text-align: center;
+    }
+    .search-results{
+      text-align: center;
+    }
+    .center{
+      text-align: center;
+    }
+  /* .links{
+    opacity:0%
+  } */
+</style>
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    // Список ссылок для поиска
+    const links = [
+"city/moscow.html",
+"city/Sankt-Petersburg.html",
+"city/Novosibirsk.html",
+"city/Ekaterinburg.html",
+"city/Kazan.html",
+"city/Nizhniy Novgorod.html",
+"city/Chelyabinsk.html",
+"city/Omsk.html",
+"city/Krasnodar.html",
+"city/Rostov-on-Don.html",
+"city/Ufa.html",
+"city/Krasnoyarsk.html",
+"city/Perm.html",
+"city/Voronezh.html",
+"city/Volgograd.html",
+"city/Samara.html",
+"city/Saratov.html",
+"city/Tyumen.html",
+"city/Togliatti.html",
+"city/Izhevsk.html"
+    ];
+
+    // Функция для поиска по ссылкам
+    function searchLinks(query) {
+      const results = links.filter(link => link.toLowerCase().includes(query.toLowerCase()));
+      return results;
+    }
+
+    // Функция для отображения результатов поиска
+    function displaySearchResults(results) {
+      const searchResults = document.getElementById('search-results');
+      searchResults.innerHTML = '';
+
+      if (results.length === 0) {
+        searchResults.textContent = 'Ничего не найдено.';
+      } else {
+        results.forEach(result => {
+          const linkElement = document.createElement('a');
+          linkElement.href = result;
+          linkElement.textContent = result;
+          linkElement.target = '_blank';
+
+          const listItem = document.createElement('li');
+          listItem.appendChild(linkElement);
+
+          searchResults.appendChild(listItem);
+        });
+      }
+    }
+
+    // Обработчик события при вводе текста в поле поиска
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', function() {
+      const query = this.value;
+      const searchResults = searchLinks(query);
+      displaySearchResults(searchResults);
+    });
+
+
+
+  let input1 = document.querySelector('#search-input')
+  let links1 = document.querySelector('.links-1')//.style.opacity='0%'
+input1.addEventListener('click', function () {
+  links1.style.opacity = '0%'
+})
+
+  </script>
+</body>
+</html>

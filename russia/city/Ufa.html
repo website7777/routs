@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Routs-Djaipur</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfHzCf5-aCRX_McxEFxj3hGDYk-P8WkDg"></script>
+  <script>
+const city = {
+name: 'Уфа',
+lat: 54.738762,
+lng: 55.972055
+};
+
+function generateRandomRoute(transportMode) {
+const waypoints = [
+{ name: 'Парк им. Якутова', lat: 54.741617, lng: 55.958366 },
+{ name: 'Парк "Горки"', lat: 54.728646, lng: 55.991898 },
+{ name: 'Парк "Дружба"', lat: 54.751363, lng: 55.957475 },
+{ name: 'Парк им. Маяковского', lat: 54.733449, lng: 55.983048 }
+];
+
+      const shuffledWaypoints = shuffle(waypoints);
+      const selectedWaypoints = shuffledWaypoints.slice(0, 3);
+      const route = [city, ...selectedWaypoints, city];
+
+      displayRouteOnMap(route, transportMode);
+    }
+
+    function shuffle(array) {
+      const shuffledArray = [...array];
+      for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+      }
+      return shuffledArray;
+    }
+
+    function displayRouteOnMap(route, transportMode) {
+      const mapContainer = document.getElementById('map');
+      const directionsService = new google.maps.DirectionsService();
+      const directionsDisplay = new google.maps.DirectionsRenderer();
+      const mapOptions = {
+        center: new google.maps.LatLng(city.lat, city.lng),
+        zoom: 13
+      };
+      const map = new google.maps.Map(mapContainer, mapOptions);
+      directionsDisplay.setMap(map);
+
+      const waypoints = route.slice(1, -1).map(waypoint => ({
+        location: new google.maps.LatLng(waypoint.lat, waypoint.lng),
+        stopover: true
+      }));
+
+      const request = {
+        origin: new google.maps.LatLng(route[0].lat, route[0].lng),
+        destination: new google.maps.LatLng(route[route.length - 1].lat, route[route.length - 1].lng),
+        waypoints: waypoints,
+        optimizeWaypoints: true,
+        travelMode: transportMode
+      };
+
+      directionsService.route(request, function(response, status) {
+        if (status === 'OK') {
+          directionsDisplay.setDirections(response);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <button onclick="generateRandomRoute('WALKING')">Сгенерировать пешеходный маршрут</button>
+  <button onclick="generateRandomRoute('DRIVING')">Сгенерировать автомобильный маршрут</button>
+  <div id="map" style="width: 100%; height: 500px;"></div>
+</body>
+</html>

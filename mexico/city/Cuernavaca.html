@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Routs-Cuernavaca</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfHzCf5-aCRX_McxEFxj3hGDYk-P8WkDg"></script>
+  <script>
+    const city = { name: 'Cuernavaca', lat: 19.6923, lng: -99.2405  };
+
+    function generateRandomRoute(transportMode) {
+      const waypoints = [
+      { name: 'Los Lirios Park', lat: 19.6859, lng: -99.2308 },
+    { name: 'Benito Juarez Park', lat: 19.6923, lng: -99.2405 },
+    { name: 'Caravela Park', lat: 19.7007, lng: -99.2336 },
+    { name: 'Los Gallos Park', lat: 19.6961, lng: -99.2354 }
+ 
+      ];
+
+      const shuffledWaypoints = shuffle(waypoints);
+      const selectedWaypoints = shuffledWaypoints.slice(0, 3);
+      const route = [city, ...selectedWaypoints, city];
+
+      displayRouteOnMap(route, transportMode);
+    }
+
+    function shuffle(array) {
+      const shuffledArray = [...array];
+      for (let i = shuffledArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+      }
+      return shuffledArray;
+    }
+
+    function displayRouteOnMap(route, transportMode) {
+      const mapContainer = document.getElementById('map');
+      const directionsService = new google.maps.DirectionsService();
+      const directionsDisplay = new google.maps.DirectionsRenderer();
+      const mapOptions = {
+        center: new google.maps.LatLng(city.lat, city.lng),
+        zoom: 13
+      };
+      const map = new google.maps.Map(mapContainer, mapOptions);
+      directionsDisplay.setMap(map);
+
+      const waypoints = route.slice(1, -1).map(waypoint => ({
+        location: new google.maps.LatLng(waypoint.lat, waypoint.lng),
+        stopover: true
+      }));
+
+      const request = {
+        origin: new google.maps.LatLng(route[0].lat, route[0].lng),
+        destination: new google.maps.LatLng(route[route.length - 1].lat, route[route.length - 1].lng),
+        waypoints: waypoints,
+        optimizeWaypoints: true,
+        travelMode: transportMode
+      };
+
+      directionsService.route(request, function(response, status) {
+        if (status === 'OK') {
+          directionsDisplay.setDirections(response);
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+  <button onclick="generateRandomRoute('WALKING')">Сгенерировать пешеходный маршрут</button>
+  <button onclick="generateRandomRoute('DRIVING')">Сгенерировать автомобильный маршрут</button>
+  <div id="map" style="width: 100%; height: 500px;"></div>
+</body>
+</html>
