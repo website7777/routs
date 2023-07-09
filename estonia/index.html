@@ -5,8 +5,17 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfHzCf5-aCRX_McxEFxj3hGDYk-P8WkDg"></script>
   <title>work</title>
 </head>
-<body>
-<div class="links-1">
+<body>  
+  <div class="center">
+
+  <h1>Поиск по городам</h1>
+    <input type="text" id="search-input" placeholder="Введите поисковый запрос">
+    <div id="search-results"></div> 
+   </div>
+     
+  
+   <p></p>
+<div class="links-1" id="linksContainer">
 <button class="btn1">Tallinn</button>
 <button class="btn2">Tartu</button>
 <button class="btn3">Narva</button>
@@ -51,6 +60,17 @@
 <script src="rapla.js"></script>
 <script src="kiviõli.js"></script>
 
+<style>
+  .center {    
+    text-align: center;
+  }
+    .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Регулируйте это значение, чтобы задать интервал между группами кнопок */
+  }
+</style>
+
 <script>
 // Функция для обработки клика на кнопку с классом "btn6"
 document.querySelector('.btn6').addEventListener('click', function(event) {
@@ -61,6 +81,96 @@ document.querySelector('.btn6').addEventListener('click', function(event) {
       viljandi();
     });
 
+
+
+ // Список ссылок для поиска
+ const links = [
+    "city/tallinn.html",
+"city/tartu.html",
+"city/narva.html",
+"city/pärnu.html",
+"city/Kohtla-Järve.html",
+"city/viljandi.html",
+"city/mardu.html",
+"city/rakvere.html",
+"city/sillamäe.html",
+"city/kurresaare.html",
+"city/võru.html",
+"city/valka.html",
+"city/jõhvi.html",
+"city/haapsalu.html",
+"city/keila.html",
+"city/paide.html",
+"city/põlva.html",
+"city/elva.html",
+"city/tapa.html",
+"city/rapla.html"
+    ];
+
+    // Функция для поиска по ссылкам
+    function searchLinks(query) {
+      const results = links.filter(link => link.toLowerCase().includes(query.toLowerCase()));
+      return results;
+    }
+
+    // Функция для отображения результатов поиска
+    function displaySearchResults(results) {
+      const searchResults = document.getElementById('search-results');
+      searchResults.innerHTML = '';
+
+      if (results.length === 0) {
+        searchResults.textContent = 'Ничего не найдено.';
+      } else {
+        results.forEach(result => {
+          const linkElement = document.createElement('a');
+          linkElement.href = result;
+          linkElement.textContent = result;
+          linkElement.target = '_blank';
+
+          const listItem = document.createElement('li');
+          listItem.appendChild(linkElement);
+
+          searchResults.appendChild(listItem);
+        });
+      }
+    }
+
+    // Обработчик события при вводе текста в поле поиска
+    const searchInput = document.getElementById('search-input');
+    searchInput.addEventListener('input', function() {
+      const query = this.value;
+      const searchResults = searchLinks(query);
+      displaySearchResults(searchResults);
+    });
+
+
+
+  let input1 = document.querySelector('#search-input')
+  let links1 = document.querySelector('.links-1')//.style.opacity='0%'
+input1.addEventListener('click', function () {
+  links1.style.opacity = '0%'
+})
+
+
+// Получаем ссылку на контейнер с кнопками
+const linksContainer = document.getElementById('linksContainer');
+
+// Разбиваем кнопки на группы по три
+const buttons = Array.from(linksContainer.getElementsByTagName('button'));
+const groupedButtons = [];
+while (buttons.length) {
+  groupedButtons.push(buttons.splice(0, 3));
+}
+
+// Создаем обертку для каждой группы кнопок
+groupedButtons.forEach(buttonGroup => {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'button-group';
+  buttonGroup.forEach(button => {
+    wrapper.appendChild(button);
+  });
+  linksContainer.appendChild(wrapper);
+});
 </script>
 </body>
 </html>
