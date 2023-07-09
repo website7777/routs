@@ -1,162 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Estonia-routs</title>
-  <style>
-    #search-input {
-      width: 300px;
-    }
-    #search-results {
-      margin-top: 10px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfHzCf5-aCRX_McxEFxj3hGDYk-P8WkDg"></script>
+  <title>work</title>
 </head>
 <body>
-  <div class="center">
-
-<h1>Поиск по городам</h1>
-  <input type="text" id="search-input" placeholder="Введите поисковый запрос">
-  <div id="search-results"></div> 
- </div>
-   
-
- <p></p>
-
 <div class="links-1">
-<button><a href="city/tallinn.html">Tallinn</a></button>
-<p></p>
-<button><a href="city/tartu.html">Tartu</a></button>
-<p></p>
-<button><a href="city/narva.html">Narva</a></button>
-<p></p>
-<button><a href="city/pärnu.html">Pärnu</a></button>
-<p></p>
-<button><a href="city/Kohtla-Järve.html">Kohtla-Järve</a></button>
-<p></p>
-<button><a href="city/viljandi.html">Viljandi</a></button>
-<p></p>
-<button><a href="city/mardu.html">Mardu</a></button>
-<p></p>
-<button><a href="city/rakvere.html">Rakvere</a></button>
-<p></p>
-<button><a href="city/sillamäe.html">Sillamäe</a></button>
-<p></p>
-<button><a href="city/kurresaare.html">Kurresaare</a></button>
-<p></p>
-<button><a href="city/võru.html">Võru</a></button>
-<p></p>
-<button><a href="city/valka.html">Valka</a></button>
-<p></p>
-<button><a href="city/jõhvi.html">Jõhvi</a></button>
-<p></p>
-<button><a href="city/haapsalu.html">Haapsalu</a></button>
-<p></p>
-<button><a href="city/keila.html">Keila</a></button>
-<p></p>
-<button><a href="city/paide.html">Paide</a></button>
-<p></p>
-<button><a href="city/põlva.html">Põlva</a></button>
-<p></p>
-<button><a href="city/elva.html">Elva</a></button>
-<p></p>
-<button><a href="city/tapa.html">Tapa</a></button>
-<p></p>
-<button><a href="city/rapla.html">Rapla</a></button>
+<button class="btn1">Tallinn</button>
+<button class="btn2">Tartu</button>
+<button class="btn3">Narva</button>
+<button class="btn4">Pärnu</button>
+<button class="btn5">Kohtla-Järve</button>    
+<button class="btn6">Viljandi</button>
+<button class="btn7">Maardu</button>
+<button class="btn8">Rakvere</button>
+<button class="btn9">Sillamäe</button>
+<button class="btn10">Kuressaare</button>
+<button class="btn11">Võru</button>
+<button class="btn12">Valga</button>
+<button class="btn13">Jõhvi</button>
+<button class="btn14">Haapsalu</button>
+<button class="btn15">Keila</button>
+<button class="btn16">Paide</button>
+<button class="btn17">Elva</button>
+<button class="btn18">Tapa</button>
+<button class="btn19">Rapla</button>
+<button class="btn20">Kiviõli</button>
 </div>
-<style>
-  a{
-    color: #000;
-    text-decoration: none;
-  }
-  .links-1 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 10px;
-    }
-    input{
-      text-align: center;
-    }
-    .search-results{
-      text-align: center;
-    }
-    .center{
-      text-align: center;
-    }
-  /* .links{
-    opacity:0%
-  } */
-</style>
 
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script>
-    // Список ссылок для поиска
-    const links = [
-    "city/tallinn.html",
-"city/tartu.html",
-"city/narva.html",
-"city/pärnu.html",
-"city/Kohtla-Järve.html",
-"city/viljandi.html",
-"city/mardu.html",
-"city/rakvere.html",
-"city/sillamäe.html",
-"city/kurresaare.html",
-"city/võru.html",
-"city/valka.html",
-"city/jõhvi.html",
-"city/haapsalu.html",
-"city/keila.html",
-"city/paide.html",
-"city/põlva.html",
-"city/elva.html",
-"city/tapa.html",
-"city/rapla.html"
-    ];
 
-    // Функция для поиска по ссылкам
-    function searchLinks(query) {
-      const results = links.filter(link => link.toLowerCase().includes(query.toLowerCase()));
-      return results;
-    }
+<script src="tallinn.js"></script>
+<script src="tartu.js"></script>
+<script src="narva.js"></script>
+<script src="pärnu.js"></script>
+<script src="kohtla-järve.js"></script>
+<script src="viljandi.js"></script>
+<script src="maardu.js"></script>
+<script src="rakvere.js"></script>
+<script src="sillamae.js"></script>
+<script src="kuresaare.js"></script>
+<script src="voru.js"></script>
+<script src="valga.js"></script>
+<script src="jõhvi.js"></script>
+<script src="haapsalu.js"></script>
+<script src="keila.js"></script>
+<script src="paide.js"></script>
+<script src="elva.js"></script>
+<script src="tapa.js"></script>
+<script src="rapla.js"></script>
+<script src="kiviõli.js"></script>
 
-    // Функция для отображения результатов поиска
-    function displaySearchResults(results) {
-      const searchResults = document.getElementById('search-results');
-      searchResults.innerHTML = '';
+<script>
+// Функция для обработки клика на кнопку с классом "btn6"
+document.querySelector('.btn6').addEventListener('click', function(event) {
+  //    event.preventDefault(); // Предотвращаем обновление страницы
+      let links1 = document.querySelector('.links-1');
+      links1.innerHTML = '';
 
-      if (results.length === 0) {
-        searchResults.textContent = 'Ничего не найдено.';
-      } else {
-        results.forEach(result => {
-          const linkElement = document.createElement('a');
-          linkElement.href = result;
-          linkElement.textContent = result;
-          linkElement.target = '_blank';
-
-          const listItem = document.createElement('li');
-          listItem.appendChild(linkElement);
-
-          searchResults.appendChild(listItem);
-        });
-      }
-    }
-
-    // Обработчик события при вводе текста в поле поиска
-    const searchInput = document.getElementById('search-input');
-    searchInput.addEventListener('input', function() {
-      const query = this.value;
-      const searchResults = searchLinks(query);
-      displaySearchResults(searchResults);
+      viljandi();
     });
 
-
-
-  let input1 = document.querySelector('#search-input')
-  let links1 = document.querySelector('.links-1')//.style.opacity='0%'
-input1.addEventListener('click', function () {
-  links1.style.opacity = '0%'
-})
-
-  </script>
+</script>
 </body>
 </html>
