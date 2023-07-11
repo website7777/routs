@@ -1,95 +1,91 @@
-// Функция для обработки клика на кнопку с классом "btn6"
-document.querySelector('.btn20').addEventListener('click', function(event) {
-    event.preventDefault(); // Предотвращаем обновление страницы
-    let links1 = document.querySelector('.links-1');
-    links1.innerHTML = '';
-  
-    vadodara();
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfHzCf5-aCRX_McxEFxj3hGDYk-P8WkDg"></script>
+  <title>work</title>
+</head>
+<body>  
+
+   <div class="links-1" id="linksContainer">
+    <button class="btn1">Mumbai</button>
+    <button class="btn2">Delhi</button>
+    <button class="btn3">Bangalore</button>
+    <button class="btn4">Hyderabad</button>
+    <button class="btn5">Ahmedabad</button>    
+    <button class="btn6">Chennai</button>
+    <button class="btn7">Calcutta</button>
+    <button class="btn8">Surat</button>
+    <button class="btn9">Pune</button>
+    <button class="btn10">Jaipur</button>
+    <button class="btn11">Lucknow</button>
+    <button class="btn12">Kanpur</button>
+    <button class="btn13">Nagpur</button>
+    <button class="btn14">Indore</button>
+    <button class="btn15">Thanet</button>
+    <button class="btn16">Bhopal</button>
+    <button class="btn17">Vishakhapatnam</button>
+    <button class="btn18">Pimpri-Chinchwad</button>
+    <button class="btn19">Patna</button>
+    <button class="btn20">Vadodara</button>
+    </div>
+
+
+<script src="mumbai.js"></script>
+<script src="delhi.js"></script>
+<script src="bangalore.js"></script>
+<script src="hyderabad.js"></script>
+<script src="ahmedabad.js"></script>
+<script src="chennai.js"></script>
+<script src="calcutta.js"></script>
+<script src="surat.js"></script>
+<script src="pune.js"></script>
+<script src="jaipur.js"></script>
+<script src="lucknow.js"></script>
+<script src="kanpur.js"></script>
+<script src="nagpur.js"></script>
+<script src="indore.js"></script>
+<script src="thanet.js"></script>
+<script src="bhopal.js"></script>
+<script src="vishakhapatnam.js"></script>
+<script src="pimpri-chinchwad.js"></script>
+<script src="patna.js"></script>
+<script src="vadodara.js"></script>
+<style>
+  .center {    
+    text-align: center;
+  }
+    .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Регулируйте это значение, чтобы задать интервал между группами кнопок */
+  }
+</style>
+
+<script>
+
+
+
+// Получаем ссылку на контейнер с кнопками
+const linksContainer = document.getElementById('linksContainer');
+
+// Разбиваем кнопки на группы по три
+const buttons = Array.from(linksContainer.getElementsByTagName('button'));
+const groupedButtons = [];
+while (buttons.length) {
+  groupedButtons.push(buttons.splice(0, 3));
+}
+
+// Создаем обертку для каждой группы кнопок
+groupedButtons.forEach(buttonGroup => {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'button-group';
+  buttonGroup.forEach(button => {
+    wrapper.appendChild(button);
   });
-// Функция для отображения карты Viljandi
-function vadodara() {
-    var mapDiv = document.createElement('div');
-    mapDiv.id = 'map';  
-    mapDiv.style.width = '100%';
-    mapDiv.style.height = '500px';
-    document.body.appendChild(mapDiv);
-  
-    const places = [
-        { name: "Laxmi Vilas Palace", coordinates: { lat: 22.3072, lng: 73.1812 } },
-        { name: "Sayaji Gardens", coordinates: { lat: 22.3156, lng: 73.1714 } },
-        { name: "Kirti Mandir", coordinates: { lat: 22.3049, lng: 73.1792 } },
-        { name: "EME Temple", coordinates: { lat: 22.3177, lng: 73.1874 } },
-        { name: "Vadodara Museum & Picture Gallery", coordinates: { lat: 22.3130, lng: 73.1677 } }
-      ];
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      const map = createMap(22.3072, 73.1812, places);
-    generateRandomRoute(places, 'DRIVING', map);
-  }
-  
-  // Функция для создания карты с заданными координатами
-  function createMap(latitude, longitude, places) {
-    var walkingButton = document.createElement('button');
-    walkingButton.textContent = 'Сгенерировать пешеходный маршрут';
-    walkingButton.onclick = function() {
-      generateRandomRoute(places, 'WALKING');
-    };
-    document.body.appendChild(walkingButton);
-  
-    var drivingButton = document.createElement('button');
-    drivingButton.textContent = 'Сгенерировать автомобильный маршрут';
-    drivingButton.onclick = function() {
-      generateRandomRoute(places, 'DRIVING');
-    };
-    document.body.appendChild(drivingButton);
-  
-    var mapDiv2 = document.createElement('div');
-    mapDiv2.id = 'map';
-    mapDiv2.style.width = '100%';
-    mapDiv2.style.height = '500px';
-    document.body.appendChild(mapDiv2);
-  
-    const map = new google.maps.Map(mapDiv2, {
-      center: { lat: latitude, lng: longitude },
-      zoom: 14
-    });
-  
-    return map;
-  }
-  
-  // Функция для генерации случайного маршрута
-  function generateRandomRoute(places, transportationMode, map) {
-    const directionsService = new google.maps.DirectionsService();
-    const directionsDisplay = new google.maps.DirectionsRenderer();
-    directionsDisplay.setMap(map);
-  
-    const waypoints = places.map(place => ({
-      location: place.coordinates,
-      stopover: true,
-    }));
-  
-    const travelMode = transportationMode === 'WALKING' ? "WALKING" : "DRIVING";
-  
-    const request = {
-      origin: places[0].coordinates,
-      destination: places[places.length - 1].coordinates,
-      waypoints,
-      travelMode,
-    };
-  
-    directionsService.route(request, function(result, status) {
-      if (status === "OK") {
-        directionsDisplay.setDirections(result);
-      }
-    });
-  }
-  
+  linksContainer.appendChild(wrapper);
+});
+</script>
+</body>
+</html>
